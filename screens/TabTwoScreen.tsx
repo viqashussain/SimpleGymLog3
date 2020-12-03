@@ -1,15 +1,26 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { Workout } from '../objects/workout';
 
 export default function TabTwoScreen() {
+  const [workout, setWorkout] = useState(new Workout());
+
+  function save()
+  {
+    
+  }
+
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.js" />
+
+      <input placeholder="Description" value={workout.description} onChange={e => setWorkout({...workout, description: e.target.value})} />
     </View>
   );
 }
